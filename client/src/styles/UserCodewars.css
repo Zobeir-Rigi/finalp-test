@@ -1,0 +1,18 @@
+.UserCodewars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.generate-score {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+span{
+    background-color: brown;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}

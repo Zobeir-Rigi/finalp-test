@@ -3,3 +3,14 @@
     background-color: rgb(171, 204, 171);
    
 }
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h3{
+    color: white;
+}
+span{
+    width: 200px;
+}

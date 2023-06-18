@@ -14,6 +14,7 @@ const CodeWars = () => {
   }, []);
   return (
     <section className="codewars">
+        <h3>fetching data based my user name </h3>
       {data ? <span>Name : {data.name}</span> : <span>Loading </span>}
       {data ? <span>Honor : {data.honor}</span> : <span>Loading </span>}
       {data ? <span>Clan : {data.clan}</span> : <span>Loading </span>}
