@@ -1,11 +1,12 @@
-import React from 'react'
-import "../styles/Main.css"
+import React from "react";
+import "../styles/Main.css";
+import CodeWars from "./CodeWars";
 const Main = () => {
   return (
-    <main>
-    main
-    </main>
-  )
-}
+    <div className="main">
+      <CodeWars />
+    </div>
+  );
+};
 
-export default Main
+export default Main;
