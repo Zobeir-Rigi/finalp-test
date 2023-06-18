@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/UserCodewars.css";
-const UserCodewars = () => {
+const Pulls = () => {
   const [username, setUserName] = useState("");
   const [data, setData] = useState([]);
   const handleUserName = (event) => {
@@ -40,4 +40,4 @@ const UserCodewars = () => {
   );
 };
 
-export default UserCodewars;
+export default Pulls;

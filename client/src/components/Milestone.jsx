@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/UserCodewars.css";
-const UserCodewars = () => {
+const Milestone = () => {
   const [username, setUserName] = useState("");
   const [userCodwars, setUserCodewars] = useState([]);
   const [data, setData] = useState([]);
@@ -81,4 +81,4 @@ const UserCodewars = () => {
   );
 };
 
-export default UserCodewars;
+export default Milestone;
