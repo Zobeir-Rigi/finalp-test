@@ -22,20 +22,23 @@ const Pulls = () => {
 
   return (
     <div className="UserCodewars">
-      <h3>milestone</h3>
+      <h3>Pull request</h3>
       <input type="text" value={username} onChange={handleUserName} />
 
       <button onClick={handleFetchData}>see list of pull request</button>
-      <ul>
-        {data.map((pull) => (
-          <li>
-            {pull.url.replace(
-              "https://api.github.com/repos/CodeYourFuture/",
-              ""
-            )}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h4>pull request number : {data.length}</h4>
+        <ul>
+          {data.map((pull) => (
+            <li>
+              {pull.url.replace(
+                "https://api.github.com/repos/CodeYourFuture/",
+                ""
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
