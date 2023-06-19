@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/UserCodewars.css";
+import "../styles/Pulls.css"
+import Footer from "./Footer"
+
 const Pulls = () => {
   const [username, setUserName] = useState("");
   const [data, setData] = useState([]);
@@ -21,23 +23,30 @@ const Pulls = () => {
   };
 
   return (
-    <div className="UserCodewars">
-      <h3>Pull request</h3>
-      <input type="text" value={username} onChange={handleUserName} />
+    <div className="Pulls">
+      <h3>Pull Requests</h3>
+      <div className="input-button">
+        <input
+          type="text"
+          value={username}
+          onChange={handleUserName}
+          placeholder="Enter Your Github User Name ..."
+        />
+        <button onClick={handleFetchData}>Go for It</button>
+      </div>
 
-      <button onClick={handleFetchData}>see list of pull request</button>
+      <h4>Your Total Pull Requests are : {data.length}</h4>
       <div>
-        <h4>pull request number : {data.length}</h4>
-        <ul>
-          {data.map((pull) => (
-            <li>
+        <ol className="">
+          {data.map((pull, index) => (
+            <li key={index} className="">
               {pull.url.replace(
                 "https://api.github.com/repos/CodeYourFuture/",
                 ""
               )}
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );

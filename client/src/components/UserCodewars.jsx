@@ -19,7 +19,7 @@ const UserCodewars = () => {
   };
   return (
     <div className="UserCodewars">
-      <h3>Enter your user name to see your rank</h3>
+      <h3>Enter your user name to see your Codewars rank</h3>
       <input type="text" value={username} onChange={handleUserName} />
       <button onClick={handleFetchData}>What is my rank?</button>
       {userCodwars && (
