@@ -15,10 +15,12 @@ const Milestone = () => {
     setSearchInput(event.target.value);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (event) => {
+    event.preventDefault();
     fetchCodeWarsRank();
     fetchPullRequestCount();
   };
+ 
   /************************************Fetching User Codewars Account data */
   const fetchCodeWarsRank = () => {
     fetch(codeWarsUrl)
@@ -58,13 +60,16 @@ const Milestone = () => {
     <div className="MileStone">
       <h3>Milestone</h3>
       <div className="input-button">
-        <input
+      <form onSubmit={handleSearch}>
+      <input
           type="text"
           value={searchInput}
           onChange={handleSearchInput}
           placeholder="Enter Your Github User Name ..."
         />
-        <button onClick={handleSearch}>Search</button>
+        <button type="submit">Search</button>
+        </form>
+        
       </div>
       <div className="table-box">
         <table>
