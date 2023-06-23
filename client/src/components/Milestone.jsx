@@ -35,9 +35,6 @@ const Milestone = () => {
       })
       .catch((err) => console.log("something is wrong", err));
   };
-  useEffect(() => {
-    fetchCodeWarsRank();
-  }, []);
 
   /**************************************Fetching User Github Account data */
   const fetchPullRequestCount = () => {
@@ -52,9 +49,6 @@ const Milestone = () => {
       })
       .catch((err) => console.log("something is wrong", err));
   };
-  useEffect(() => {
-    fetchPullRequestCount();
-  },[]);
   /************************************************/
   return (
     <div className="MileStone">
