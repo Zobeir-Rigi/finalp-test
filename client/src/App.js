@@ -25,7 +25,7 @@ function App() {
         <Route path="/Pull Requests" element={<Pulls/>}/>
         <Route path="/MileStone"  element={<Milestone/>} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

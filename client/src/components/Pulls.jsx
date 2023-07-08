@@ -1,30 +1,35 @@
-import React from "react";
-import { useState } from "react";
-import "../styles/Pulls.css"
-import Footer from "./Footer"
+import React, { useState } from "react";
+import "../styles/Pulls.css";
+import {mandatoryCourswork} from "../MandatoryPulls";
 
 const Pulls = () => {
   const [username, setUserName] = useState("");
-  const [data, setData] = useState([]);
+  const [filteredPulls, setFilteredPulls] = useState([]);
+
   const handleUserName = (event) => {
     setUserName(event.target.value);
   };
-
+  
   const githubUrl = `https://api.github.com/search/issues?q=is:pr%20author:${username}%20user:codeyourfuture`;
 
   const handleFetchData = () => {
     fetch(githubUrl)
       .then((res) => res.json())
-      .then((data) => {
-        setData(data.items);
-        console.log(data);
+      .then((responseData) => {
+        const filteredPulls = responseData.items.filter((pull) => {
+          const repoName = pull.url
+            .replace("https://api.github.com/repos/CodeYourFuture/", "")//its because we dont want the url and also issues number
+            .split("/")[0];
+          return mandatoryCourswork.includes(repoName);
+        });
+        setFilteredPulls(filteredPulls);
       })
-      .catch((err) => console.log("soething is wrong", err));
+      .catch((err) => console.log("Something went wrong", err));
   };
 
   return (
     <div className="Pulls">
-      <h3>Pull Requests</h3>
+      <h3>The number of mandatory pulls you have done</h3>
       <div className="input-button">
         <input
           type="text"
@@ -35,15 +40,14 @@ const Pulls = () => {
         <button onClick={handleFetchData}>Go for It</button>
       </div>
 
-      <h4>Your Total Pull Requests are : {data.length}</h4>
+      <h4>Your Total Pull Requests: {filteredPulls.length}</h4>
       <div>
         <ol className="">
-          {data.map((pull, index) => (
+          {filteredPulls.map((pull, index) => (
             <li key={index} className="">
-              {pull.url.replace(
-                "https://api.github.com/repos/CodeYourFuture/",
-                ""
-              )}
+              {pull.url
+                .replace("https://api.github.com/repos/CodeYourFuture/", "")
+                .split("/")[0]}
             </li>
           ))}
         </ol>

@@ -18,7 +18,10 @@ button{
     border-radius: 7px;
     padding: 7px;
 }
-
+ul{
+    display: flex;
+    flex-direction: column;
+}
 
 
     
