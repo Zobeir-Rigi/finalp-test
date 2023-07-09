@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Pulls.css";
-import {mandatoryCourswork} from "../MandatoryPulls";
+import { fetchData } from "../FilterMandatory";
 
 const Pulls = () => {
   const [username, setUserName] = useState("");
@@ -9,22 +9,17 @@ const Pulls = () => {
   const handleUserName = (event) => {
     setUserName(event.target.value);
   };
-  
+
   const githubUrl = `https://api.github.com/search/issues?q=is:pr%20author:${username}%20user:codeyourfuture`;
 
   const handleFetchData = () => {
-    fetch(githubUrl)
-      .then((res) => res.json())
-      .then((responseData) => {
-        const filteredPulls = responseData.items.filter((pull) => {
-          const repoName = pull.url
-            .replace("https://api.github.com/repos/CodeYourFuture/", "")//its because we dont want the url and also issues number
-            .split("/")[0];
-          return mandatoryCourswork.includes(repoName);
-        });
+    fetchData(githubUrl)
+      .then((filteredPulls) => {
         setFilteredPulls(filteredPulls);
       })
-      .catch((err) => console.log("Something went wrong", err));
+      .catch((err) => {
+        console.log("Something went wrong", err);
+      });
   };
 
   return (
@@ -45,9 +40,11 @@ const Pulls = () => {
         <ol className="">
           {filteredPulls.map((pull, index) => (
             <li key={index} className="">
-              {pull.url
-                .replace("https://api.github.com/repos/CodeYourFuture/", "")
-                .split("/")[0]}
+              {
+                pull.url
+                  .replace("https://api.github.com/repos/CodeYourFuture/", "")
+                  .split("/")[0]
+              }
             </li>
           ))}
         </ol>
